@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Farming</title>
+  <link rel="stylesheet" href="Chart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="admin-profile">
+        <div class="admin-avatar">
+          <img src="PICTURES/bomel.jpg" alt="Admin" id="adminAvatar">
+        </div>
+        <span class="admin-name">Farm Admin</span>
+        <span class="admin-status online">Online</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="Homepage.html" class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="Chart.html" class="nav-item active">
+          <i class="fas fa-chart-line"></i>
+          <span>Chart</span>
+        </a>
+        <a href="Water level.html" class="nav-item">
+          <i class="fas fa-water"></i>
+          <span>Irrigation</span>
+        </a>
+        <a href="Records.html" class="nav-item">
+          <i class="fas fa-history"></i>
+          <span>Records</span>
+        </a>
+        <a href="Settings.html" class="nav-item">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="content">
+        <!-- Header -->
+        <header class="dashboard-header">
+          <h1 class="header-title">
+            <i class="fas fa-seedling"></i>
+            Smart Farming
+          </h1>
+          <div class="header-controls">
+            <!-- Add Notification Bell -->
+        <div class="notifications">
+          <button id="notificationBtn" aria-label="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-count pulse">5</span>
+          </button>
+          <div class="notification-dropdown">
+            <div class="notification-header">
+              <h3><i class="fas fa-bell"></i> Notifications</h3>
+              <div class="notification-actions">
+                <button class="mark-all-read">
+                  <i class="fas fa-check-double"></i>
+                  Mark all as read
+                </button>
+                <button class="notification-settings">
+                  <i class="fas fa-cog"></i>
+                </button>
+              </div>
+            </div>
+            <div class="notification-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="alert">Alerts</button>
+              <button class="filter-btn" data-filter="warning">Warnings</button>
+              <button class="filter-btn" data-filter="info">Info</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread alert">
+                <div class="notification-icon">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="notification-content">
+                  <div class="notification-title">Critical Water Level</div>
+                  <div class="notification-message">Section A water level has dropped below 30%. Immediate irrigation required.</div>
+                  <div class="notification-time">5 minutes ago</div>
+                </div>
+                <div class="notification-actions">
+                  <button class="action-btn view" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="action-btn dismiss" title="Dismiss">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Add more notification items here -->
+            </div>
+            <div class="notification-footer">
+              <a href="#" class="view-all">View All Notifications</a>
+              <span class="notification-count-text">5 unread notifications</span>
+            </div>
+          </div>
+        </div>
+            <div class="search-bar">
+              <input type="search" placeholder="Search..." aria-label="Search">
+              <button type="submit" aria-label="Submit search">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="container">
+            <header>
+                <div class="controls">
+                    <select id="period-select">
+                        <option value="lastWeek">Last Week</option>
+                        <option value="lastMonth">Last Month</option>
+                        <option value="lastYear">Last Year</option>
+                    </select>
+                    <button id="export-btn">Export Data</button>
+                </div>
+            </header>
+    
+            <div class="summary-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Total Harvest</h3>
+                        <span class="icon">📅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="value">18,800 kg</div>
+                        <p class="trend">+20% from last period</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Water Usage</h3>
+                        <span class="icon">💧</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="value">10,150 L</div>
+                        <p class="trend">-5% from last period</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Fertilizer Used</h3>
+                        <span class="icon">🌱</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="value">1,830 L</div>
+                        <p class="trend">+2% from last period</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Solar Energy</h3>
+                        <span class="icon">⚡</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="value">187 kWh</div>
+                        <p class="trend">+15% from last period</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="harvest">Harvest</button>
+                <button class="tab-btn" data-tab="water">Water Usage</button>
+                <button class="tab-btn" data-tab="fertilizer">Fertilizer</button>
+                <button class="tab-btn" data-tab="pestControl">Pest Control</button>
+                <button class="tab-btn" data-tab="solar">Solar Energy</button>
+            </div>
+    
+            <div class="tab-content">
+                <div class="tab-pane active" id="harvest">
+                    <div class="chart-card">
+                        <h2>Rice Harvest Trends</h2>
+                        <p>Monthly harvest amounts in kilograms</p>
+                        <canvas id="harvestChart"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane" id="water">
+                    <div class="chart-card">
+                        <h2>Water Usage and Irrigation Schedule</h2>
+                        <p>Daily water consumption and irrigation timings</p>
+                        <canvas id="waterChart"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane" id="fertilizer">
+                    <div class="chart-card">
+                        <h2>Fertilizer Application</h2>
+                        <p>Monthly fertilizer usage in liters</p>
+                        <canvas id="fertilizerChart"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pestControl">
+                    <div class="chart-card">
+                        <h2>Pest Control Measures</h2>
+                        <p>Monthly pest control product application in liters</p>
+                        <canvas id="pestControlChart"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane" id="solar">
+                    <div class="chart-card">
+                        <h2>Solar Energy Consumption</h2>
+                        <p>Daily solar energy usage in kilowatts</p>
+                        <canvas id="solarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+    <script src="Chart.js"></script>
+</div>
+</body>
+</html>
+

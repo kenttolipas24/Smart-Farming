@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Farming</title>
+  <link rel="stylesheet" href="Homepage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="admin-profile">
+        <div class="admin-avatar">
+          <img src="PICTURES/bomel.jpg" alt="Admin" id="adminAvatar">
+        </div>
+        <span class="admin-name">Farm Admin</span>
+        <span class="admin-status online">Online</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="Chart.html" class="nav-item">
+          <i class="fas fa-chart-line"></i>
+          <span>Chart</span>
+        </a>
+        <a href="Water level.html" class="nav-item">
+          <i class="fas fa-water"></i>
+          <span>Irrigation</span>
+        </a>
+        <a href="Records.html" class="nav-item">
+          <i class="fas fa-history"></i>
+          <span>Records</span>
+        </a>
+        <a href="Settings.html" class="nav-item">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <h1 class="header-title">
+          <i class="fas fa-seedling"></i>
+          Smart Farming
+        </h1>
+        <div class="header-controls">
+          <!-- Add Notification Bell -->
+      <div class="notifications">
+        <button id="notificationBtn" aria-label="Notifications">
+          <i class="fas fa-bell"></i>
+          <span class="notification-count pulse">5</span>
+        </button>
+        <div class="notification-dropdown">
+          <div class="notification-header">
+            <h3><i class="fas fa-bell"></i> Notifications</h3>
+            <div class="notification-actions">
+              <button class="mark-all-read">
+                <i class="fas fa-check-double"></i>
+                Mark all as read
+              </button>
+              <button class="notification-settings">
+                <i class="fas fa-cog"></i>
+              </button>
+            </div>
+          </div>
+          <div class="notification-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="alert">Alerts</button>
+            <button class="filter-btn" data-filter="warning">Warnings</button>
+            <button class="filter-btn" data-filter="info">Info</button>
+          </div>
+          <div class="notification-list">
+            <div class="notification-item unread alert">
+              <div class="notification-icon">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div class="notification-content">
+                <div class="notification-title">Critical Water Level</div>
+                <div class="notification-message">Section A water level has dropped below 30%. Immediate irrigation required.</div>
+                <div class="notification-time">5 minutes ago</div>
+              </div>
+              <div class="notification-actions">
+                <button class="action-btn view" title="View Details">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn dismiss" title="Dismiss">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Add more notification items here -->
+          </div>
+          <div class="notification-footer">
+            <a href="#" class="view-all">View All Notifications</a>
+            <span class="notification-count-text">5 unread notifications</span>
+          </div>
+        </div>
+      </div>
+          <div class="search-bar">
+            <input type="search" placeholder="Search..." aria-label="Search">
+            <button type="submit" aria-label="Submit search">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- System Status Overview -->
+        <section class="status-overview">
+          <h2 class="section-title">System Status</h2>
+          <div class="status-grid">
+            <div class="status-card">
+              <div class="status-icon irrigation-status">
+                <i class="fas fa-tint"></i>
+              </div>
+              <div class="status-info">
+                <h3>Irrigation System</h3>
+                <span class="status active">Active</span>
+                <div class="status-details">
+                  <span>Water Flow: 2.5 L/min</span>
+                  <span>Next Schedule: 2h</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="status-card">
+              <div class="status-icon solar-status">
+                <i class="fas fa-solar-panel"></i>
+              </div>
+              <div class="status-info">
+                <h3>Solar System</h3>
+                <span class="status active">Generating</span>
+                <div class="status-details">
+                  <span>Current: 2.8 kW</span>
+                  <span>Daily: 15.5 kWh</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="status-card">
+              <div class="status-icon npk-status">
+                <i class="fas fa-flask"></i>
+              </div>
+              <div class="status-info">
+                <h3>NPK Levels</h3>
+                <span class="status warning">Check Required</span>
+                <div class="status-details">
+                  <span>N: 45% P: 32% K: 28%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="status-card">
+              <div class="status-icon wifi-status">
+                <i class="fas fa-wifi"></i>
+              </div>
+              <div class="status-info">
+                <h3>Network Status</h3>
+                <span class="status active">Connected</span>
+                <div class="status-details">
+                  <span>Signal: Strong</span>
+                  <span>Devices: 8</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Real-time Monitoring -->
+        <section class="monitoring">
+          <h2 class="section-title">Real-time Monitoring</h2>
+          <div class="monitoring-grid">
+            <!-- NPK Monitoring -->
+            <div class="card">
+              <div class="card-header">
+                <h3>NPK Monitoring</h3>
+                <button class="refresh-btn">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+              </div>
+              <!-- Simple Values Display -->
+              <div class="npk-values">
+                <div class="value-box">
+                    <span>N</span>
+                    <div id="n-value">45%</div>
+                </div>
+                <div class="value-box">
+                    <span>P</span>
+                    <div id="p-value">32%</div>
+                </div>
+                <div class="value-box">
+                    <span>K</span>
+                    <div id="k-value">28%</div>
+                </div>
+            </div>
+              <div class="card-body">
+                <canvas id="npkChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Field Water Level Monitoring Card -->
+            <div class="card field-water-card">
+              <div class="card-header">
+                <h3>Water Level Monitoring</h3>
+              </div>
+              <div class="card-body">
+                <div class="field-monitoring-grid">
+                  <div class="field-plot" data-water-level="85">
+                    <div class="field-container">
+                      <div class="field-visual">
+                        <div class="water-overlay" style="height: 85%;">
+                          <div class="water-ripples"></div>
+                        </div>            
+                        <div class="level-indicator">
+                          <div class="level-marks">
+                            <span class="mark overflow">15cm</span>
+                            <span class="mark optimal">10cm</span>
+                            <span class="mark minimum">5cm</span>
+                          </div>              
+                        </div>
+                      </div>
+                      <div class="plot-info">            
+                        <div class="water-stats">
+                          <span class="current-status optimal">Optimal Level</span>
+                          <span class="water-depth">Water Depth: 12cm</span>
+                        </div>
+                        <div class="drainage-status">
+                          <i class="fas fa-water"></i>
+                          <span>Drainage Gate: Closed</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field-overview">
+                  <div class="overview-stats">
+                    <div class="stat-row">
+                      <div class="stat-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="stat-info">
+                          <span class="stat-label">Average Water Level</span>
+                          <div class="stat-value">10.5 cm</div>
+                        </div>
+                      </div>
+                      <div class="stat-item">
+                        <i class="fas fa-history"></i>
+                        <div class="stat-info">
+                          <span class="stat-label">Last Drainage</span>
+                          <div class="stat-value">2h ago</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Solar Power -->
+            <div class="card solar-monitor">
+              <div class="card-header">
+                <h3>Solar Power Generation</h3>
+              </div>
+              <div class="card-body">
+                <div class="power-stats">
+                  <div class="current-power">
+                    <div class="power-circle">
+                      <span class="power-value">0.0</span>
+                      <span class="power-unit">kW</span>
+                    </div>
+                    <span class="power-label">Current Output</span>
+                  </div>
+                  <div class="power-details">
+                    <div class="detail-item">
+                      <span class="label">Battery Level</span>
+                      <span class="value">0%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="power-graph">
+                  <canvas id="solarChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weather Forecast Card -->
+            <div class="card weather-card">
+              <div class="card-header">
+                <h3>Weather Forecast</h3>
+              </div>
+              <div class="card-body">
+                <div class="current-weather">
+                  <div class="weather-primary">
+                    <div class="weather-icon">
+                      <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="weather-info">
+                      <div class="temperature">28°C</div>
+                      <div class="condition">Sunny</div>
+                    </div>
+                  </div>
+                  <div class="weather-details">
+                    <div class="detail-item">
+                      <i class="fas fa-tint"></i>
+                      <span>Humidity: 75%</span>
+                    </div>
+                    <div class="detail-item">
+                      <i class="fas fa-wind"></i>
+                      <span>Wind: 5 km/h</span>
+                    </div>
+                    <div class="detail-item">
+                      <i class="fas fa-cloud-rain"></i>
+                      <span>Rain Chance: 20%</span>
+                    </div>
+                    <div class="detail-item">
+                      <i class="fas fa-sun"></i>
+                      <span>UV Index: 6</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="forecast-grid">
+                  <div class="forecast-day">
+                    <span class="day">Monday</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Control Center -->
+        <section class="control-center">
+          <h2 class="section-title">Control Center</h2>
+          <div class="control-grid">
+            <!-- Irrigation Control -->
+            <div class="control-card">
+              <div class="card-header">
+                <h3><i class="fas fa-tint"></i> Irrigation</h3>
+                <span class="status active">Active</span>
+              </div>
+              <div class="control-body">
+                <div class="control-item">
+                  <label>Water Flow Rate</label>
+                  <input type="range" min="0" max="100" value="50" class="slider" id="waterFlow">
+                  <span class="value">50%</span>
+                </div>
+                <div class="control-item">
+                  <label>Schedule</label>
+                  <select id="irrigationSchedule">
+                    <option value="1">Every 1 hour</option>
+                    <option value="2">Every 2 hours</option>
+                    <option value="4">Every 4 hours</option>
+                  </select>
+                </div>
+                <button class="control-btn" id="startIrrigation">
+                  <i class="fas fa-play"></i> Start Irrigation
+                </button>
+              </div>
+            </div>
+        
+            <!-- Fertilizer Control -->
+            <div class="control-card">
+              <div class="card-header">
+                <h3><i class="fas fa-flask"></i> Fertilizer</h3>
+                <span class="status warning">Low Supply</span>
+              </div>
+              <div class="control-body">
+                <div class="control-item">
+                  <label>Fertilizer Mix</label>
+                  <select id="fertilizerMix">
+                    <option value="npk">NPK Mix</option>
+                    <option value="nitrogen">Nitrogen Rich</option>
+                    <option value="phosphorus">Phosphorus Rich</option>
+                  </select>
+                </div>
+                <div class="control-item">
+                  <label>Application Rate</label>
+                  <input type="range" min="0" max="100" value="60" class="slider" id="fertilizerRate">
+                  <span class="value">60%</span>
+                </div>
+                <button class="control-btn" id="startFertilizer">
+                  <i class="fas fa-spray-can"></i> Apply Fertilizer
+                </button>
+              </div>
+            </div>
+        
+            <!-- Pest Control (New) -->
+            <div class="control-card">
+              <div class="card-header">
+                <h3><i class="fas fa-bug"></i> Pest Control</h3>
+                <span class="status">Ready</span>
+              </div>
+              <div class="control-body">
+                <div class="control-item">
+                  <label>Treatment Type</label>
+                  <select id="pestControl">
+                    <option value="organic">Organic Treatment</option>
+                    <option value="chemical">Chemical Treatment</option>
+                    <option value="biological">Biological Control</option>
+                  </select>
+                </div>
+                <div class="control-item">
+                  <label>Coverage Area</label>
+                  <input type="range" min="0" max="100" value="75" class="slider" id="coverageArea">
+                  <span class="value">75%</span>
+                </div>
+                <button class="control-btn" id="startPestControl">
+                  <i class="fas fa-shield-alt"></i> Apply Treatment
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="Homepage.js"></script>
+</body>
+</html>

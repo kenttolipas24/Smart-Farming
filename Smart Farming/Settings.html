@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farming Dashboard - Settings</title>
+    <link rel="stylesheet" href="Settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="admin-profile">
+              <div class="admin-avatar">
+                <img src="PICTURES/bomel.jpg" alt="Admin" id="adminAvatar">
+              </div>
+              <span class="admin-name">Farm Admin</span>
+              <span class="admin-status online">Online</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="Homepage.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+              </a>
+              <a href="Chart.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Chart</span>
+              </a>
+              <a href="Water level.html" class="nav-item">
+                <i class="fas fa-water"></i>
+                <span>Irrigation</span>
+              </a>
+              <a href="Records.html" class="nav-item">
+                <i class="fas fa-history"></i>
+                <span>Records</span>
+              </a>
+              <a href="Settings.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+              </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1 class="header-title">
+                  <i class="fas fa-seedling"></i>
+                  Smart Farming
+                </h1>
+                <div class="header-controls">
+                  <!-- Add Notification Bell -->
+              <div class="notifications">
+                <button id="notificationBtn" aria-label="Notifications">
+                  <i class="fas fa-bell"></i>
+                  <span class="notification-count pulse">5</span>
+                </button>
+                <div class="notification-dropdown">
+                  <div class="notification-header">
+                    <h3><i class="fas fa-bell"></i> Notifications</h3>
+                    <div class="notification-actions">
+                      <button class="mark-all-read">
+                        <i class="fas fa-check-double"></i>
+                        Mark all as read
+                      </button>
+                      <button class="notification-settings">
+                        <i class="fas fa-cog"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="notification-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="alert">Alerts</button>
+                    <button class="filter-btn" data-filter="warning">Warnings</button>
+                    <button class="filter-btn" data-filter="info">Info</button>
+                  </div>
+                  <div class="notification-list">
+                    <div class="notification-item unread alert">
+                      <div class="notification-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                      </div>
+                      <div class="notification-content">
+                        <div class="notification-title">Critical Water Level</div>
+                        <div class="notification-message">Section A water level has dropped below 30%. Immediate irrigation required.</div>
+                        <div class="notification-time">5 minutes ago</div>
+                      </div>
+                      <div class="notification-actions">
+                        <button class="action-btn view" title="View Details">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="action-btn dismiss" title="Dismiss">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- Add more notification items here -->
+                  </div>
+                  <div class="notification-footer">
+                    <a href="#" class="view-all">View All Notifications</a>
+                    <span class="notification-count-text">5 unread notifications</span>
+                  </div>
+                </div>
+              </div>
+                  <div class="search-bar">
+                    <input type="search" placeholder="Search..." aria-label="Search">
+                    <button type="submit" aria-label="Submit search">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+            </header>
+
+            <section class="settings-section">
+                <h2>Settings</h2>
+                <form class="settings-form">
+                    <div class="setting-group">
+                        <h3>General Settings</h3>
+                        <div class="setting-item">
+                            <label for="notifications">Enable Notifications</label>
+                            <input type="checkbox" id="notifications" name="notifications" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label for="dark-mode">Dark Mode</label>
+                            <input type="checkbox" id="dark-mode" name="dark-mode">
+                        </div>
+                        <div class="setting-item">
+                            <label for="language">Language</label>
+                            <select id="language" name="language">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr">Tagalog</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Farm Settings</h3>
+                        <div class="setting-item">
+                            <label for="units">Measurement Units</label>
+                            <select id="units" name="units">
+                                <option value="metric">Metric (°C, mm)</option>
+                                <option value="imperial">Imperial (°F, in)</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="data-sync">Data Sync Frequency</label>
+                            <select id="data-sync" name="data-sync">
+                                <option value="5">Every 5 minutes</option>
+                                <option value="15">Every 15 minutes</option>
+                                <option value="30">Every 30 minutes</option>
+                                <option value="60">Every hour</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="irrigation-threshold">Irrigation Threshold (%)</label>
+                            <div class="range-container">
+                                <input type="range" id="irrigation-threshold" name="irrigation-threshold" min="0" max="100" value="30">
+                                <output for="irrigation-threshold">30%</output>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Notification Settings</h3>
+                        <div class="setting-item">
+                            <label for="email">Email Notifications</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email">
+                        </div>
+                        <div class="setting-item">
+                            <label for="sms">SMS Notifications</label>
+                            <input type="tel" id="sms" name="sms" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="Settings.js"></script>
+</body>
+</html>
